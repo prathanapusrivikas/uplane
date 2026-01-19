@@ -1,0 +1,19 @@
+node_modules
+.DS_Store
+.env
+.env.local
+.env.deploy
+*.log
+
+# npm cache
+.npm
+npm-cache
+.npm-cache
+node_modules/.cache
+
+# Server
+server/dist
+server/data.json
+
+# Web
+web/dist

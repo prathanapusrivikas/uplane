@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+:root {
+  --ink: #1c1c22;
+  --muted: #5c616c;
+  --accent: #f2a340;
+  --accent-strong: #e2762d;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-strong: #ffffff;
+  --stroke: rgba(28, 28, 34, 0.12);
+  --shadow: 0 22px 50px rgba(27, 30, 38, 0.14);
+  --radius: 26px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Newsreader", serif;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(201, 230, 243, 0.75), transparent 60%),
+    radial-gradient(700px 400px at 85% 15%, rgba(255, 228, 192, 0.75), transparent 55%),
+    linear-gradient(120deg, #f7f4ef 0%, #eef6f7 55%, #f3efe8 100%);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+button,
+input {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.page {
+  position: relative;
+  padding: clamp(28px, 4vw, 64px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(0px);
+  opacity: 0.85;
+  animation: float 18s ease-in-out infinite;
+  z-index: 0;
+}
+
+.orb-one {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 30% 30%, #ffd28f, #f29f5c);
+  top: 20px;
+  right: 60px;
+}
+
+.orb-two {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle at 30% 30%, #bce0f6, #68b0c9);
+  bottom: 120px;
+  left: 40px;
+  animation-delay: -6s;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--stroke);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 3.4vw, 3.6rem);
+  line-height: 1.1;
+  margin: 18px 0 12px;
+}
+
+.hero p {
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  animation: fadeInUp 0.8s ease;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dropzone {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px dashed rgba(28, 28, 34, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dropzone:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.dropzone input {
+  display: none;
+}
+
+.dropzone h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.dropzone p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.preview {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(28, 28, 34, 0.15);
+}
+
+.preview.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.primary {
+  background: linear-gradient(130deg, var(--accent), var(--accent-strong));
+  color: #1b1b1b;
+  box-shadow: 0 12px 26px rgba(242, 163, 64, 0.3);
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+}
+
+.ghost {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--stroke);
+  color: var(--ink);
+}
+
+.danger {
+  background: rgba(235, 87, 63, 0.18);
+  color: #b3442c;
+  border: 1px solid rgba(235, 87, 63, 0.3);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.status.error {
+  color: #b3442c;
+  background: rgba(235, 87, 63, 0.12);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(235, 87, 63, 0.2);
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(28, 28, 34, 0.2);
+  border-top-color: var(--accent-strong);
+  animation: spin 1s linear infinite;
+}
+
+.result-card h2 {
+  margin: 0 0 6px;
+}
+
+.result-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.result-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-body img {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(28, 28, 34, 0.15);
+  background: repeating-conic-gradient(#fafafa 0% 25%, #f1f1f1 0% 50%) 50% / 20px 20px;
+}
+
+.link-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.link-row input {
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid rgba(28, 28, 34, 0.15);
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+  border-radius: 18px;
+  border: 1px dashed rgba(28, 28, 34, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@media (max-width: 900px) {
+  .link-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
