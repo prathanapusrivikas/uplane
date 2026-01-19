@@ -9,9 +9,15 @@ Full-stack app that uploads an image, removes the background via remove.bg, flip
 - **Hosting:** Cloudinary for original and processed images
 - **Storage:** JSON file for image metadata
 
+## Quick Start
+
+For a quick setup guide, see **[docs/QUICK_START.md](docs/QUICK_START.md)**.
+
+**Important:** If using the deployed backend, wake it up first by visiting https://uplane.onrender.com/api/health before starting the frontend.
+
 ## Local development
 ### Prerequisites
-- Node.js 18+
+- Node.js 18+ (20.19+ or 22.12+ recommended for frontend)
 - remove.bg API key
 - Cloudinary account (cloud name, API key, secret)
 
@@ -47,6 +53,11 @@ Update `web/.env` if your backend runs elsewhere:
 ```
 VITE_API_BASE_URL=http://localhost:4000
 ```
+
+**Important:** If you're using the deployed backend (Render), wake it up first:
+1. Open https://uplane.onrender.com/api/health in your browser
+2. Wait for it to respond with `{"ok":true}` (may take 30-60 seconds on first request)
+3. This ensures the backend is ready before starting the frontend
 
 Open `http://localhost:5173` in the browser.
 

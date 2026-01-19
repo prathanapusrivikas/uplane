@@ -34,6 +34,29 @@ Update `web/.env` if the backend is not on port 4000:
 VITE_API_BASE_URL=http://localhost:4000
 ```
 
+**⚠️ Important: Wake up the backend first (if using deployed backend)**
+
+If you're using the deployed backend on Render (not running locally), you must wake it up before starting the frontend:
+
+1. **Open the backend health endpoint in your browser:**
+   ```
+   https://uplane.onrender.com/api/health
+   ```
+
+2. **Wait for the response:**
+   - You should see: `{"ok":true}`
+   - The first request may take **30-60 seconds** (cold start)
+   - This is normal for Render's free tier, which spins down after inactivity
+
+3. **Once you see the response, start the frontend:**
+   ```bash
+   npm run dev
+   ```
+
+**Why?** Render's free tier services automatically spin down after 15 minutes of inactivity. The first request after spin-down triggers a "cold start" which can take 30-60 seconds. By waking up the backend first, you ensure it's ready when the frontend makes API calls.
+
+**Note:** If you're running the backend locally (`npm run dev` in the `server` directory), you can skip this step.
+
 Open `http://localhost:5173`.
 
 ## How to get API keys
@@ -71,6 +94,12 @@ Open `http://localhost:5173`.
 ### CORS errors in the browser
 - Make sure `CORS_ORIGIN` matches the frontend URL (including scheme and port).
 - Restart the backend after changing environment variables.
+
+### Backend appears slow or times out on first request
+- If using Render's free tier, the service spins down after inactivity.
+- **Solution:** Wake up the backend by visiting https://uplane.onrender.com/api/health before using the frontend.
+- The first request after spin-down takes 30-60 seconds (cold start).
+- Subsequent requests will be fast until the service spins down again (after 15 minutes of inactivity).
 
 ### `npm install` fails due to permissions
 - Use a project-local cache to bypass permission issues:
